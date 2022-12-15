@@ -89,12 +89,15 @@
             this.settingsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pauseToggle = new System.Windows.Forms.Button();
+            this.slowdown = new System.Windows.Forms.TrackBar();
             this.glovesPalettePictureBox = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.paletteComboBox = new System.Windows.Forms.ComboBox();
             this.palettePictureBox = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.animationComboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panelImagePreview = new System.Windows.Forms.Panel();
             this.animationPictureBox = new System.Windows.Forms.PictureBox();
@@ -106,9 +109,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.displayTextTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.advanceFrame = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.slowdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.glovesPalettePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palettePictureBox)).BeginInit();
             this.panelImagePreview.SuspendLayout();
@@ -614,12 +619,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.advanceFrame);
+            this.panel1.Controls.Add(this.pauseToggle);
+            this.panel1.Controls.Add(this.slowdown);
             this.panel1.Controls.Add(this.glovesPalettePictureBox);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.paletteComboBox);
             this.panel1.Controls.Add(this.palettePictureBox);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.animationComboBox);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panelImagePreview);
             this.panel1.Controls.Add(this.authorRomDisplayTextBox);
@@ -633,6 +642,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 532);
             this.panel1.TabIndex = 4;
+            // 
+            // pauseToggle
+            // 
+            this.pauseToggle.Location = new System.Drawing.Point(95, 262);
+            this.pauseToggle.Name = "pauseToggle";
+            this.pauseToggle.Size = new System.Drawing.Size(87, 23);
+            this.pauseToggle.TabIndex = 21;
+            this.pauseToggle.Text = "Toggle paused";
+            this.pauseToggle.UseVisualStyleBackColor = true;
+            this.pauseToggle.Click += new System.EventHandler(this.pauseToggle_Click);
+            // 
+            // slowdown
+            // 
+            this.slowdown.Location = new System.Drawing.Point(6, 275);
+            this.slowdown.Maximum = 4;
+            this.slowdown.Name = "slowdown";
+            this.slowdown.Size = new System.Drawing.Size(74, 45);
+            this.slowdown.TabIndex = 20;
+            this.slowdown.Value = 4;
+            this.slowdown.Scroll += new System.EventHandler(this.slowdown_Scroll);
             // 
             // glovesPalettePictureBox
             // 
@@ -697,6 +726,15 @@
             this.animationComboBox.TabIndex = 14;
             this.animationComboBox.SelectedIndexChanged += new System.EventHandler(this.animationComboBox_SelectedIndexChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 259);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Playback speed:";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -713,9 +751,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelImagePreview.AutoScroll = true;
             this.panelImagePreview.Controls.Add(this.animationPictureBox);
-            this.panelImagePreview.Location = new System.Drawing.Point(6, 262);
+            this.panelImagePreview.Location = new System.Drawing.Point(6, 326);
             this.panelImagePreview.Name = "panelImagePreview";
-            this.panelImagePreview.Size = new System.Drawing.Size(281, 267);
+            this.panelImagePreview.Size = new System.Drawing.Size(281, 203);
             this.panelImagePreview.TabIndex = 12;
             // 
             // animationPictureBox
@@ -799,6 +837,16 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Display Text:";
             // 
+            // advanceFrame
+            // 
+            this.advanceFrame.Location = new System.Drawing.Point(95, 292);
+            this.advanceFrame.Name = "advanceFrame";
+            this.advanceFrame.Size = new System.Drawing.Size(87, 23);
+            this.advanceFrame.TabIndex = 22;
+            this.advanceFrame.Text = "Advance frame";
+            this.advanceFrame.UseVisualStyleBackColor = true;
+            this.advanceFrame.Click += new System.EventHandler(this.advanceFrame_Click);
+            // 
             // ZSpriteToolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -819,6 +867,7 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.slowdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glovesPalettePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.palettePictureBox)).EndInit();
             this.panelImagePreview.ResumeLayout(false);
@@ -906,6 +955,10 @@
         private System.Windows.Forms.PictureBox animationPictureBox;
         private System.Windows.Forms.ContextMenuStrip animationPreviewContextMenu;
         private System.Windows.Forms.ToolStripMenuItem animationPreviewSetBackgroundColorMenuItem;
+        private System.Windows.Forms.TrackBar slowdown;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button pauseToggle;
+        private System.Windows.Forms.Button advanceFrame;
     }
 }
 

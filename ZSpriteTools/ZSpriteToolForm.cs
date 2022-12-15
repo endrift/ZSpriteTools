@@ -1361,6 +1361,28 @@ namespace ZSpriteTools
                 animationPictureBox.BackColor = colorDialog.Color;
             }
         }
+
+        private void slowdown_Scroll(object sender, EventArgs e)
+        {
+            frameTimer.Interval = (int) Math.Ceiling(1000.0 / 60.0 * Math.Pow(2.0, 4.0 - slowdown.Value));
+        }
+
+        private void pauseToggle_Click(object sender, EventArgs e)
+        {
+            if (frameTimer.Enabled)
+            {
+                frameTimer.Stop();
+            }
+            else
+            {
+                frameTimer.Start();
+            }
+        }
+
+        private void advanceFrame_Click(object sender, EventArgs e)
+        {
+            FrameTimer_Tick(null, null);
+        }
     }
 
     public struct ComboBoxItem
